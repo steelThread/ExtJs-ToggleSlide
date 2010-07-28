@@ -22,31 +22,31 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @cfg {Number} duration The duration for the slide animation (defaults to .09)
      */
     duration: .09,
-	
+    
     /**
      * @cfg {String} onText The text to display when the toggle is in the 'On' position (defaults to 'ON')
-     */	
-	onText: 'ON', 
+     */ 
+    onText: 'ON', 
 
     /**
      * @cfg {String} offText The text to display when the toggle is in the 'Off' position (defaults to 'OFF')
-     */	
-	offText: 'OFF', 
+     */ 
+    offText: 'OFF', 
 
     /**
      * @cfg {Boolean} resizeHandle Specifies whether the drag handle should be resized to cover the on or off side (defaults to true)
-     */	
+     */ 
     resizeHandle: true,
 
     /**
      * @cfg {Boolean} resizeContainer Specifies whether the contain element should be resized (defaults to true)
-     */	
+     */ 
     resizeContainer: true,
 
     /**
      * @cfg {String} onLabelCls The CSS class for the on label (defaults to 'x-toggle-slide-label-on')
      */
-	onLabelCls: 'x-toggle-slide-label-on',
+    onLabelCls: 'x-toggle-slide-label-on',
 
     /**
      * @cfg {String} ofLabelCls The CSS class for the off label (defaults to 'x-toggle-slide-label-off')
@@ -70,39 +70,39 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
 
     /**
      * @cfg {Boolean} state The initial state of the Toggle (defaults to false)
-     */	
-	state: false,
+     */ 
+    state: false,
 
     /**
      * @cfg {Boolean} booleanMode Determines whether the internal value is represented as a Boolean.  If not in booleanMode
      * the internal value will be represented as the on or off label text. The value passed to event listeners will also
      * be determined on this setting (defaults to true)
-     */	
-	booleanMode: true,
-		
-    // private	
-	dragging: false, 
-	
-	initComponent: function() {
-	    Ext.ux.ToggleSlide.superclass.initComponent.call(this);
-		this.addEvents(
-			/**
-			* @event beforechange
-			* Fires before this toggle is changed.
-			* @param {Ext.form.Checkbox} this This toggle
-			* @param {Boolean|String} state The next toggle state value if boolean mode else the label for the next state
-			*/
-			'beforechange',
-			
-			/**
-			* @event change
-			* Fires when the toggle is on or off.
-			* @param {Ext.form.Checkbox} this This toggle
-			* @param {Boolean|String} state the new toggle state value, boolean if in boolean mode else the label
-			*/
-			'change'
-		);
-	},
+     */ 
+    booleanMode: true,
+        
+    // private  
+    dragging: false, 
+    
+    initComponent: function() {
+        Ext.ux.ToggleSlide.superclass.initComponent.call(this);
+        this.addEvents(
+            /**
+            * @event beforechange
+            * Fires before this toggle is changed.
+            * @param {Ext.form.Checkbox} this This toggle
+            * @param {Boolean|String} state The next toggle state value if boolean mode else the label for the next state
+            */
+            'beforechange',
+            
+            /**
+            * @event change
+            * Fires when the toggle is on or off.
+            * @param {Ext.form.Checkbox} this This toggle
+            * @param {Boolean|String} state the new toggle state value, boolean if in boolean mode else the label
+            */
+            'change'
+        );
+    },
 
     /**
      * Set up the hidden field
@@ -111,28 +111,28 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @private
      */
     onRender: function(ct, position) {
-		this.autoEl = {
-	        tag: 'div',
-	        cls: 'x-toggle-slide-container'
-	    };
-	
-	    Ext.ux.ToggleSlide.superclass.onRender.call(this, ct, position);
-	    
-	    var tpl = new Ext.Template(
-			'<label class="{offLabelCls}"',
-		        '<span>{offText}</span>',
-			'</label>',
-			'<label class="{onLabelCls}">',
-		        '<span>{onText}</span>',
-			'</label>',
-			'<div class="{handleCls}">',
-		      '<div class="{handleRightCls}">',
-			    '<div class="{handleCenterCls}"></div>',
-			  '</div>',
-			'</div>'
-		);
-	  
-	    this.el.dom.innerHTML = tpl.apply({
+        this.autoEl = {
+            tag: 'div',
+            cls: 'x-toggle-slide-container'
+        };
+    
+        Ext.ux.ToggleSlide.superclass.onRender.call(this, ct, position);
+        
+        var tpl = new Ext.Template(
+            '<label class="{offLabelCls}"',
+                '<span>{offText}</span>',
+            '</label>',
+            '<label class="{onLabelCls}">',
+                '<span>{onText}</span>',
+            '</label>',
+            '<div class="{handleCls}">',
+              '<div class="{handleRightCls}">',
+                '<div class="{handleCenterCls}"></div>',
+              '</div>',
+            '</div>'
+        );
+      
+        this.el.dom.innerHTML = tpl.apply({
             offLabelCls  : this.offLabelCls,
             offText: this.offText,
             onLabelCls: this.onLabelCls,
@@ -152,10 +152,10 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
         this.disableTextSelection();
 
         if (!this.disabled) {
-	        this.registerToggleListeners();
-	    } else {
-            Ext.ux.ToggleSlide.superclass.disable.call(this);		
-	    }
+            this.registerToggleListeners();
+        } else {
+            Ext.ux.ToggleSlide.superclass.disable.call(this);       
+        }
     },
 
     /**
@@ -163,39 +163,39 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @private
      */
     resize: function() {
-	    var container = this.el;
-	    var offlabel = this.offLabel;
-	    var offspan = this.offSpan;
-	    var onlabel = this.onLabel;
-	    var onspan = this.onSpan;
-	    var handle = this.handle;
+        var container = this.el;
+        var offlabel = this.offLabel;
+        var offspan = this.offSpan;
+        var onlabel = this.onLabel;
+        var onspan = this.onSpan;
+        var handle = this.handle;
 
         if (this.resizeHandle) {
-			var min = (onlabel.getWidth() < offlabel.getWidth()) ? onlabel.getWidth() : offlabel.getWidth();
-		    handle.setWidth(min);
-	    } 
+            var min = (onlabel.getWidth() < offlabel.getWidth()) ? onlabel.getWidth() : offlabel.getWidth();
+            handle.setWidth(min);
+        } 
 
         if (this.resizeContainer) {
-		    var max = (onlabel.getWidth() > offlabel.getWidth()) ? onlabel.getWidth() : offlabel.getWidth();
-		
-		    // add a proporational (1/3) amount of pixels to the containers height.
-		    // keeps the slide from looking squat for shorter containers
-		    var expandPx = Math.ceil(container.getHeight() / 3);
-		    container.setWidth(max + handle.getWidth() + expandPx);
-		}
-		
-	    offlabel.setWidth(container.getWidth() - 2);
-	    var rightside = this.rightside = container.getWidth() - handle.getWidth() - 3;
-	    if (this.state) {
-	        handle.setLeft(rightside);
-	        onlabel.setWidth(rightside + 4);
-	        offspan.setStyle({marginRight: rightside + 'px'});
-	
-	    } else {
-	        handle.setLeft(0);
-	        onlabel.setWidth(0);
-	        onspan.setStyle({marginLeft: -rightside + 'px'});
-	    }    
+            var max = (onlabel.getWidth() > offlabel.getWidth()) ? onlabel.getWidth() : offlabel.getWidth();
+        
+            // add a proporational (1/3) amount of pixels to the containers height.
+            // keeps the slide from looking squat for shorter containers
+            var expandPx = Math.ceil(container.getHeight() / 3);
+            container.setWidth(max + handle.getWidth() + expandPx);
+        }
+        
+        offlabel.setWidth(container.getWidth() - 2);
+        var rightside = this.rightside = container.getWidth() - handle.getWidth() - 3;
+        if (this.state) {
+            handle.setLeft(rightside);
+            onlabel.setWidth(rightside + 4);
+            offspan.setStyle({marginRight: rightside + 'px'});
+    
+        } else {
+            handle.setLeft(0);
+            onlabel.setWidth(0);
+            onspan.setStyle({marginLeft: -rightside + 'px'});
+        }    
     },
 
     /**
@@ -203,20 +203,20 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @private
      */
     disableTextSelection: function() {
-	    var els = [this.el, this.onLabel, this.offLabel, this.handle];
-		Ext.each(els, function(el) {
-		   el.on('mousedown', function(evt) {
-		       evt.preventDefault();
-		       return false;	
-		   });
-		
-		   if (Ext.isIE) {
-		       el.on('startselect', function(evt) {
-			       evt.stopEvent();
-			       return false;
-		       });	
-		   }	
-		});
+        var els = [this.el, this.onLabel, this.offLabel, this.handle];
+        Ext.each(els, function(el) {
+           el.on('mousedown', function(evt) {
+               evt.preventDefault();
+               return false;    
+           });
+        
+           if (Ext.isIE) {
+               el.on('startselect', function(evt) {
+                   evt.stopEvent();
+                   return false;
+               });  
+           }    
+        });
     },
 
     /**
@@ -224,17 +224,17 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @private
      */
     moveHandle: function(on, callback) {
-	    var to = on ? this.rightside : 0;
-		var fx = Ext.lib.Anim.motion(this.handle, {left: {to: to}}, this.duration);
-		fx.onTween.addListener(function() {
-			this.onHandleMove();
-		}, this);
-		
-		if (callback) {
-		    fx.onComplete.addListener(callback);
-		}
+        var to = on ? this.rightside : 0;
+        var fx = Ext.lib.Anim.motion(this.handle, {left: {to: to}}, this.duration);
+        fx.onTween.addListener(function() {
+            this.onHandleMove();
+        }, this);
+        
+        if (callback) {
+            fx.onComplete.addListener(callback);
+        }
 
-		fx.animate();	
+        fx.animate();   
     },
 
     /**
@@ -257,9 +257,9 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
         var next = hc > cc;
 
         if (this.state != next) {
-	        this.toggle();
+            this.toggle();
         } else {
-	        this.moveHandle(next);
+            this.moveHandle(next);
         }
 
         this.dragging = false;
@@ -270,16 +270,16 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @private
      */
     onHandleMove: function(e) {
-	    var rightside = this.rightside;
+        var rightside = this.rightside;
         var hl = this.handle.getLeft(true);
-        var ell = this.el.getLeft(true);	
+        var ell = this.el.getLeft(true);    
         this.onLabel.setWidth(hl - ell + 4);
         this.onSpan.setStyle({marginLeft: hl - rightside + 'px'});
 
         var hr = this.handle.getRight(true);
         var elr = this.el.getRight(true);
         this.offLabel.setWidth(elr - hl - 4);
-        this.offSpan.setStyle({marginRight: -(hl - ell) + 'px'});	
+        this.offSpan.setStyle({marginRight: -(hl - ell) + 'px'});   
     },
 
     /**
@@ -287,29 +287,29 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @private
      */
     onMouseUp: function() {
-	    if (!this.dragging) {
-		    this.toggle();
-	    }
+        if (!this.dragging) {
+            this.toggle();
+        }
     },
 
     /**
      * Transition to the next state.  
      */
     toggle: function() {
-	    var next = !this.state;
-	    if (!this.booleanMode) {
-		    next = this.state ? this.onText : this.offText;
-	    }
-	
-	    if (this.fireEvent('beforechange', this, next) !== false) {
+        var next = !this.state;
+        if (!this.booleanMode) {
+            next = this.state ? this.onText : this.offText;
+        }
+    
+        if (this.fireEvent('beforechange', this, next) !== false) {
             this.state = !this.state;
             this.moveHandle(
-	            this.state, 
-	            this.fireEvent.createDelegate(this, ['change', this, this.getValue()])
-	        );       
+                this.state, 
+                this.fireEvent.createDelegate(this, ['change', this, this.getValue()])
+            );       
 
         } else {
-            this.moveHandle(this.state);	
+            this.moveHandle(this.state);    
         }
     },
 
@@ -318,12 +318,12 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @return {Ext.Component} this
      */
     enable: function() {
-	    if (this.disabled) {
-	        Ext.ux.ToggleSlide.superclass.enable.call(this);
-	        this.registerToggleListeners();
-	    }
-	
-	    return this;
+        if (this.disabled) {
+            Ext.ux.ToggleSlide.superclass.enable.call(this);
+            this.registerToggleListeners();
+        }
+    
+        return this;
     },
 
     /**
@@ -331,12 +331,12 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @private
      */
     registerToggleListeners: function() {
-		this.dd = new Ext.dd.DD(this.handle);
-		this.dd.startDrag = this.startDrag.createDelegate(this);
-		this.dd.onDrag = this.onHandleMove.createDelegate(this);
-		this.dd.endDrag = this.endDrag.createDelegate(this);
+        this.dd = new Ext.dd.DD(this.handle);
+        this.dd.startDrag = this.startDrag.createDelegate(this);
+        this.dd.onDrag = this.onHandleMove.createDelegate(this);
+        this.dd.endDrag = this.endDrag.createDelegate(this);
 
-		this.el.on('mouseup', this.onMouseUp, this);	
+        this.el.on('mouseup', this.onMouseUp, this);    
     },
 
     /**
@@ -344,8 +344,8 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @private
      */
     unregisterToggleListeners: function() {
-		Ext.destroy(this.dd);
-		this.el.un('mouseup', this.onMouseUp, this);			
+        Ext.destroy(this.dd);
+        this.el.un('mouseup', this.onMouseUp, this);            
     },
 
     /**
@@ -353,12 +353,12 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * @return {Ext.Component} this
      */
     disable: function() {
-	    if (!this.disabled) {
-	        Ext.ux.ToggleSlide.superclass.disable.call(this);
-	        this.unregisterToggleListeners();
-	    }
-	
-	    return this;
+        if (!this.disabled) {
+            Ext.ux.ToggleSlide.superclass.disable.call(this);
+            this.unregisterToggleListeners();
+        }
+    
+        return this;
     },
 
     /**
@@ -366,7 +366,7 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
      * booleanMode. 
      */    
     getValue: function() {
-	    return this.booleanMode ? this.state : (this.state ? this.onText : this.offText);
+        return this.booleanMode ? this.state : (this.state ? this.onText : this.offText);
     }
 });
 

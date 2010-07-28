@@ -23,21 +23,21 @@ Ext.ux.form.ToggleSlideField = Ext.extend(Ext.form.Field, {
      * @private
      */
     initComponent : function() {
-	    var cfg = {id: this.id + '-toggle-slide'};
+        var cfg = {id: this.id + '-toggle-slide'};
         cfg = Ext.copyTo(cfg, this.initialConfig, [
-		    'onText',
-		    'offText', 
-		    'resizeHandle',
-		    'resizeContainer',
-		    'background',
-		    'onLabelCls',
-		    'offLabelCls',
-		    'handleCls',
-		    'handleCenterCls',
-		    'handleRightCls',
-		    'state',
-		    'booleanMode'
-		]);
+            'onText',
+            'offText', 
+            'resizeHandle',
+            'resizeContainer',
+            'background',
+            'onLabelCls',
+            'offLabelCls',
+            'handleCls',
+            'handleCenterCls',
+            'handleRightCls',
+            'state',
+            'booleanMode'
+        ]);
 
         this.toggle = new Ext.ux.ToggleSlide(cfg);
         Ext.ux.form.ToggleSlideField.superclass.initComponent.call(this);
@@ -79,8 +79,8 @@ Ext.ux.form.ToggleSlideField = Ext.extend(Ext.form.Field, {
      * @private
      */
     onChange: function(toggle, state) {
-	    return this.setValue(state);
-	},
+        return this.setValue(state);
+    },
 
     /**
      * Enable the toggle when the field is enabled.
