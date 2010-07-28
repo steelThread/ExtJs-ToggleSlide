@@ -1,0 +1,16 @@
+/*!
+ * Copyright(c) 2010, http://www.mcdconsultingllc.com
+ * 
+ * Licensed under the terms of the Open Source LGPL 3.0
+ * http://www.gnu.org/licenses/lgpl.html
+ * @author Sean McDaniel <sean@mcdconsulting.com>
+ */
+@import url('toggle-slide.css');
+
+.x-toolbar .x-toggle-slide-container label {
+    padding-top: 0px;
+}
+
+form .x-toggle-slide-container label {
+    padding-top: 1px;
+}
