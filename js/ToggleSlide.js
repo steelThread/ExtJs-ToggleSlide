@@ -119,7 +119,7 @@ Ext.ux.ToggleSlide = Ext.extend(Ext.Component, {
         Ext.ux.ToggleSlide.superclass.onRender.call(this, ct, position);
         
         var tpl = new Ext.Template(
-            '<label class="{offLabelCls}"',
+            '<label class="{offLabelCls}">',
                 '<span>{offText}</span>',
             '</label>',
             '<label class="{onLabelCls}">',
