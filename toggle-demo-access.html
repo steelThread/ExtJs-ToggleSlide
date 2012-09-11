@@ -4,12 +4,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Toggle Slide Demo - Access Theme</title>
-    <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.2.1/resources/css/ext-all.css" />
-    <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.2.1/resources/css/xtheme-access.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.2.1/resources/css/xtheme-gray.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.1.1-gpl/resources/css/ext-all.css" /> -->
+    <link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.1.1-gpl/resources/css/ext-all-access.css" />
 
-    <!-- <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.2.1/resources/css/xtheme-blue.css" /> -->
-    <!-- <link rel="stylesheet" href="resources/css/toggle-slide.css" type="text/css" media="screen" charset="utf-8" /> -->
+    <link rel="stylesheet" href="resources/css/toggle-slide.css" type="text/css" media="screen" charset="utf-8" />
     <link rel="stylesheet" href="resources/css/toggle-slide-access.css" type="text/css" media="screen" charset="utf-8" />
     <style type="text/css">
         body {
@@ -36,8 +34,7 @@
         }
     </style>
 
-    <script src="http://extjs.cachefly.net/ext-3.2.1/adapter/ext/ext-base.js" type="text/javascript" ></script>
-    <script src="http://extjs.cachefly.net/ext-3.2.1/ext-all.js" type="text/javascript"></script>
+    <script src="http://cdn.sencha.io/ext-4.1.1-gpl/ext-all.js" type="text/javascript"></script>
     <script src="js/ToggleSlide.js" type="text/javascript"></script>
     <script src="js/ToggleSlideField.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -118,7 +115,7 @@
                }
            });
            
-           Ext.TaskMgr.start({
+           Ext.TaskManager.start({
                run: function() {toggle.toggle();},
                interval: 3000
            });

@@ -5,6 +5,7 @@
  * http://www.gnu.org/licenses/lgpl.html
  * @author Sean McDaniel <sean@mcdconsulting.com>
  */
+/*globals Ext:true*/
 Ext.ns('Ext.ux.form');
 
 /**
@@ -17,7 +18,17 @@ Ext.ns('Ext.ux.form');
  * as any field configuration options.
  * @xtype toggleslidefield
  */
-Ext.ux.form.ToggleSlideField = Ext.extend(Ext.form.Field, {
+(function() { "use strict";
+Ext.define('Ext.ux.form.ToggleSlideField', {
+    extend: 'Ext.form.Field',
+    alias : 'widget.toggleslidefield',
+
+    /**
+     * @cfg {String} type of input field element
+     * @private
+     */
+    inputType: 'hidden',
+
     /**
      * Initialize the component.
      * @private
@@ -50,16 +61,8 @@ Ext.ux.form.ToggleSlideField = Ext.extend(Ext.form.Field, {
      * @private
      */
     onRender: function(ct, position){
-        this.autoCreate = {
-            id: this.id,
-            name: this.name,
-            type: 'hidden',
-            tag: 'input'    
-        };
         Ext.ux.form.ToggleSlideField.superclass.onRender.call(this, ct, position);
-        this.wrap = this.el.wrap({cls: 'x-form-field-wrap'});
-        this.resizeEl = this.positionEl = this.wrap;
-        this.toggle.render(this.wrap);
+        this.toggle.render(this.bodyEl);
         this.setValue(this.toggle.getValue());
     },
  
@@ -69,7 +72,7 @@ Ext.ux.form.ToggleSlideField = Ext.extend(Ext.form.Field, {
      */
     initEvents: function() {
         Ext.ux.form.ToggleSlideField.superclass.initEvents.call(this);
-        this.toggle.on('change', this.onChange, this);   
+        this.toggle.on('change', this.onChangeToggle, this);
     },
 
     /**
@@ -78,7 +81,7 @@ Ext.ux.form.ToggleSlideField = Ext.extend(Ext.form.Field, {
      * @param {Object} v The new value.
      * @private
      */
-    onChange: function(toggle, state) {
+    onChangeToggle: function(toggle, state) {
         return this.setValue(state);
     },
 
@@ -109,5 +112,4 @@ Ext.ux.form.ToggleSlideField = Ext.extend(Ext.form.Field, {
         Ext.ux.form.ToggleSlideField.superclass.beforeDestroy.call(this);
     }
 });
-
-Ext.reg('toggleslidefield', Ext.ux.form.ToggleSlideField);
+})();
